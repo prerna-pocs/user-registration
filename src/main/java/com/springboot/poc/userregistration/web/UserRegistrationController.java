@@ -24,7 +24,7 @@ public class UserRegistrationController {
 	@Autowired
 	UserRegistrationService userRegistrationService;
 	
-	@RequestMapping("/welcome")
+	@GetMapping
 	public String welcome() {	
 		return "Welcome to the user registation API.";
 	}
@@ -66,7 +66,7 @@ public class UserRegistrationController {
 	    }
 	
 	 @RequestMapping(method = RequestMethod.GET, value = "/{pageNumber}/{size}", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public List<User> getUserById(@PathVariable("pageNumber") int pageNumber, @PathVariable("size") int size){
+	    public List<User> getPageableUsers(@PathVariable("pageNumber") int pageNumber, @PathVariable("size") int size){
 		 return userRegistrationService.getPagenatedListofUsers(pageNumber, size);
 	    }
 	
